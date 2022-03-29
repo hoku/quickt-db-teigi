@@ -58,14 +58,17 @@ class DBStructure
             // テーブル情報を取得
             $stmt = $pdo->query('SHOW TABLE STATUS LIKE \''.$tableName.'\'');
             $tableStatus = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tableStatus = self::withoutColumns($tableStatus, ['Rows', 'Avg_row_length', 'Data_length', 'Max_data_length', 'Index_length', 'Data_free', 'Auto_increment', 'Create_time', 'Update_time', 'Check_time', 'Checksum']);
 
             // キー情報を取得
             $stmt = $pdo->query('SHOW KEYS FROM '.$tableName);
             $tableKeys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tableKeys = self::withoutColumns($tableKeys, ['Table', 'Cardinality']);
 
             // フィールド情報を取得
             $stmt = $pdo->query('SHOW FULL COLUMNS FROM '.$tableName);
             $tableColumns = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tableColumns = self::withoutColumns($tableColumns, ['Privileges']);
 
             $structuresPerTable[$tableName] = [
                 'TABLE_STATUS'  => $tableStatus,
@@ -75,6 +78,18 @@ class DBStructure
         }
 
         return [$dbInfo, $structuresPerTable, $foreignKeysPerTable];
+    }
+
+    private static function withoutColumns(array $datas, array $keys)
+    {
+        $newDatas = [];
+        foreach ($datas as $data) {
+            foreach ($keys as $key) {
+                unset($data[$key]);
+            }
+            $newDatas[] = $data;
+        }
+        return $newDatas;
     }
 
 }

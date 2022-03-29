@@ -1,29 +1,30 @@
 # QuicktDBTeigi
 
-QuicktDBTeigiは、他のライブラリに一切依存せずにPHPのみでMySQLのテーブル定義を出力できるソフトウェアです。  
-簡単な設定で、テーブル定義を単位のHTMLファイルとして出力します。
+QuicktDBTeigi is software that allows you to output MySQL table definitions using only PHP, without relying on any other libraries.  
+With a simple setup, table definitions are output as HTML files.
 
 
-# 使い方
+# Usage
 
 ```
-# ソースを取ってきます
+# Get source.
 git clone https://github.com/hoku/quickt-db-teigi.git
 
-# 設定用ファイルを作成します
+# Create a config.
 cp quickt-db-teigi/config.json.example quickt-db-teigi/config.json
 
-# 設定ファイル内にDB接続情報を入力します
+# Register DB connection information in the configuration file.
 vi quickt-db-teigi/config.json
 
-# 実行します
+# Execute.
 php quickt-db-teigi/make_db_teigi.php
 ```
 
-上記を実行するだけで、「db_teigi.html」が出力されます。  
-「db_teigi.html」内には全てのテーブルの定義が記載されているため、定義情報を他の人に共有したい場合はこのHTMLファイルのみを渡せばOKです。
+Simply executing the above will output "db_teigi.html".
+
+Since "db_teigi.html" contains definitions for all tables, if you want to share the definition information with others, you only need to share this HTML file to them.
 
 
 # ライセンス
 
-本ソフトは MIT License です。
+This software is licensed under MIT License.
