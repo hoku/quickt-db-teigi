@@ -25,6 +25,6 @@ Simply executing the above will output "db_teigi.html".
 Since "db_teigi.html" contains definitions for all tables, if you want to share the definition information with others, you only need to share this HTML file to them.
 
 
-# ライセンス
+# License
 
 This software is licensed under MIT License.
