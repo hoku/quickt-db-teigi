@@ -3,6 +3,8 @@
 QuicktDBTeigi is software that allows you to output MySQL table definitions using only PHP, without relying on any other libraries.  
 With a simple setup, table definitions are output as HTML files.
 
+Author: hoku ( http://hoku.in/ )
+
 
 # Usage
 

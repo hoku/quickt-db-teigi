@@ -1,4 +1,10 @@
 <?php
+/**
+ * DB情報取得用クラス
+ *
+ * @license   MIT License
+ * @author    hoku
+ */
 
 class DBStructure
 {
